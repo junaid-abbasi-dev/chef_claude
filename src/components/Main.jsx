@@ -4,7 +4,7 @@ export default function Main() {
     // Create a state for recipe lists
     const [ingredients, setIngredients] = useState([])
     // loop over the list and creat list for all the items using map function
-    const ingredientsListItmes = ingredients.map(ingredient => (
+    const ingredientsListItems = ingredients.map(ingredient => (
         <li key={ingredient}>{ingredient}</li>
     ))
     // function to get values from the form and putting those values in state
@@ -24,11 +24,9 @@ export default function Main() {
                 <button>Add ingredient</button>
             </form>
             {/* create a section to render elements from state */}
-            <section>
+            {ingredients.length > 0 && <section>
                 <h2>Ingredients on hand:</h2>
-                <ul className="ingredients-list" aria-live="polite">
-                    {ingredientsListItmes}
-                </ul>
+                <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
                 <div className="get-recipe-container">
                     <div>
                         <h3>Ready for a recipe?</h3>
@@ -36,7 +34,7 @@ export default function Main() {
                     </div>
                     <button>Get a recipe</button>
                 </div>
-            </section>
+            </section>}
         </main>
     )
 }
